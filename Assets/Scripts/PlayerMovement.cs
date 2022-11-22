@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,25 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public Animator animator;
-    private float speed = 3.0f; // prêdkoœæ bohatera
+    public Rigidbody2D rigidbody;
+    private float speed = 3.0f; // prï¿½dkoï¿½ï¿½ bohatera
+
+
+    // start is called before the first frame update
         void Start()
     {
-      
+      rigidbody = GetComponent<Rigidbody2D>(); // it finds rigidbody of player and init it to rigidbody variable, easiest way to use rigidbody variable in the future
     }
 
+    // update is called once per frame
         void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"), 0.0f);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));  // wyrzucenie danych do animatora
+        Vector3 movement = new Vector3(horizontal, vertical, 0.0f);
+
+        animator.SetFloat("Horizontal", horizontal);  // wyrzucenie danych do animatora
         
         transform.position = transform.position + movement * Time.deltaTime * speed;
     }
