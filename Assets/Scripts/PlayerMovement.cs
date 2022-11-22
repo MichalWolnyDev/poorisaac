@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private float _moveSpeed;
-    
 
-         private void Update()
+    public Animator animator;
+    private float speed = 3.0f; // prêdkoœæ bohatera
+        void Start()
     {
-        float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
-        float moveY = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
+      
+    }
 
-        _rigidbody.MovePosition(transform.position + new Vector3(moveX, moveY, 0));
+        void Update()
+    {
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"), 0.0f);
+
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));  // wyrzucenie danych do animatora
+        
+        transform.position = transform.position + movement * Time.deltaTime * speed;
     }
 }
