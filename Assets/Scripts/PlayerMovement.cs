@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     public Rigidbody2D rigidbody;
-    private float speed = 3.0f; // pr�dko�� bohatera
+    public float moveSpeed = 3.0f; // pr�dko�� bohatera
 
 
     // start is called before the first frame update
@@ -25,8 +25,19 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical, 0.0f);
 
-        animator.SetFloat("Horizontal", horizontal);  // wyrzucenie danych do animatora
+        if(horizontal != 0){
+        animator.SetFloat("moveSpeed", horizontal);  // wyrzucenie danych do animatora
+
+        } else if(vertical != 0){
+        animator.SetFloat("moveSpeed", vertical); 
+
+        } else {
+            animator.SetFloat("moveSpeed", 0.0f);  
+        }
+
+
+
         
-        transform.position = transform.position + movement * Time.deltaTime * speed;
+        transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
 }
