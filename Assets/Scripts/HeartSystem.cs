@@ -33,11 +33,11 @@ public class HeartSystem : MonoBehaviour
 
         if(life >= 1){
             life -= damage;
-        Destroy(hearts[life].gameObject);
+            Destroy(hearts[life].gameObject);
 
-        if(life < 1){
-            dead = true;
-        }
+            if(life < 1){
+                dead = true;
+            }
         }
     }
 }
