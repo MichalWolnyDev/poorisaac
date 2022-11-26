@@ -7,7 +7,7 @@ public class HeartSystem : MonoBehaviour
     public GameObject[] hearts;
     public int life;
     private bool dead;
-
+    public Animator animator;
     private void Start(){
         life = hearts.Length;
     }
@@ -25,6 +25,7 @@ public class HeartSystem : MonoBehaviour
 
         if(dead == true){
             // set dead
+            animator.SetTrigger("Dead");
             Debug.Log("we are dead xd");
         }
     }
