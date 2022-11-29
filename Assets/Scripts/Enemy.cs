@@ -15,20 +15,28 @@ private EnemyData data;
 
 private GameObject player;
 
+private Vector2 target;
+private Vector2 position;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        target = player.transform.position;
+        position = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rat();
+        EnemyPosition();
     }
 
-    private void Rat(){
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    private void EnemyPosition(){
+        float step = speed * Time.deltaTime;
+
+        transform.position = Vector2.MoveTowards(transform.position, target, step);
     }
 
     private void OnTriggerEnter2D(Collider2D collider){
