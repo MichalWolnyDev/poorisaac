@@ -26,6 +26,7 @@ public class HeartSystem : MonoBehaviour
         if(dead == true){
             // set dead
             animator.SetTrigger("Dead");
+            SoundManagerScript.PlaySound("playerDeath"); // odtwarza dŸwiêk œmierci gracza
             Debug.Log("we are dead xd");
         }
     }

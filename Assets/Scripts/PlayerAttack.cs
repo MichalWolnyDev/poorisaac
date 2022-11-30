@@ -46,5 +46,6 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("Attack");
         attacking = true;
         attackArea.SetActive(attacking);
+        SoundManagerScript.PlaySound("playerAttack");
     }
 }

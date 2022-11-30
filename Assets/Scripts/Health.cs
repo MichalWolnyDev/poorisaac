@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 
     private int MAX_HEALTH = 100;
 
+   
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +29,13 @@ public class Health : MonoBehaviour
         this.health = health;
     }
 
+    private IEnumerator VisualIndicator(Color color) // u¿ywany po to by po uderzeniu wróg zosta³ podœwietlony na czerwono
+    {
+        GetComponent<SpriteRenderer>().color = color;
+        yield return new WaitForSeconds(0.15f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
     public void Damage(int amount)
     {
         if (amount < 0)
@@ -36,12 +44,14 @@ public class Health : MonoBehaviour
         }
 
         this.health -= amount;
+        StartCoroutine(VisualIndicator(Color.red));
 
         if (health <= 0)
         {
             Die();
         }
     }
+
 
     public void Heal(int amount)
     {
