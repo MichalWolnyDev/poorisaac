@@ -39,11 +39,13 @@ private Vector2 position;
         transform.position = Vector2.MoveTowards(transform.position, target, step);
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.CompareTag("Player")){
-            if(collider.GetComponent<HeartSystem>() != null){
-                collider.GetComponent<HeartSystem>().TakeDamage(damage);
-                this.GetComponent<HeartSystem>().TakeDamage(10000);
+            if(collider.GetComponent<Health>() != null){
+                collider.GetComponent<Health>().Damage(damage);
+                // this.GetComponent<Health>().Damage(10000);
             }
         }
     }

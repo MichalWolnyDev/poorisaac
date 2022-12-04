@@ -6,7 +6,10 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
 
+    private int hearthNumber = 5;
     private int MAX_HEALTH = 100;
+    public GameObject[] hearts;
+    public Animator animator;
 
    
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Health : MonoBehaviour
         this.health = health;
     }
 
-    private IEnumerator VisualIndicator(Color color) // u¿ywany po to by po uderzeniu wróg zosta³ podœwietlony na czerwono
+    private IEnumerator VisualIndicator(Color color) // uï¿½ywany po to by po uderzeniu wrï¿½g zostaï¿½ podï¿½wietlony na czerwono
     {
         GetComponent<SpriteRenderer>().color = color;
         yield return new WaitForSeconds(0.15f);
@@ -45,6 +48,29 @@ public class Health : MonoBehaviour
 
         this.health -= amount;
         StartCoroutine(VisualIndicator(Color.red));
+
+
+        if(gameObject.tag == "Player") { 
+            if(this.health < 100 && this.health >= 80 && this.hearthNumber == 5){
+                 Destroy(hearts[4].gameObject);
+                 this.hearthNumber -= 1;
+                
+            } else if(this.health < 80 && this.health >= 60 && this.hearthNumber == 4) {
+                 Destroy(hearts[3].gameObject);
+                  this.hearthNumber -= 1;
+            } else if(this.health < 60 && this.health >= 40 && this.hearthNumber == 3) {
+                Destroy(hearts[2].gameObject);
+                 this.hearthNumber -= 1;
+            } else if(this.health < 40 && this.health >= 20 && this.hearthNumber == 2) {
+                Destroy(hearts[1].gameObject);
+                 this.hearthNumber -= 1;
+            } else if(this.health <= 0 && this.hearthNumber == 1) {
+                Destroy(hearts[0].gameObject);
+                 this.hearthNumber -= 1;
+            }
+        }
+            
+        
 
         if (health <= 0)
         {
@@ -75,6 +101,11 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log("I am Dead!");
-        Destroy(gameObject);
+        if(gameObject.tag == "Player"){
+                animator.SetTrigger("Dead");
+        SoundManagerScript.PlaySound("playerDeath"); // odtwarza dï¿½wiï¿½k ï¿½mierci gracza
+        }
+    
+        // Destroy(gameObject);
     }
 }
