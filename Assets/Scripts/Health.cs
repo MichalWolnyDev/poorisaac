@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Health : MonoBehaviour
     private int MAX_HEALTH = 100;
     public GameObject[] hearts;
     public Animator animator;
+
+    public static Action OnPlayerDeath;
+    public static Action OnEnemyDeath;
 
    
     // Update is called once per frame
@@ -101,9 +105,14 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log("I am Dead!");
-        if(gameObject.tag == "Player"){
-                animator.SetTrigger("Dead");
-        SoundManagerScript.PlaySound("playerDeath"); // odtwarza d�wi�k �mierci gracza
+        if(this.CompareTag("Player")){
+            animator.SetTrigger("Dead");
+            SoundManagerScript.PlaySound("playerDeath"); // odtwarza d�wi�k �mierci gracza
+
+            Time.timeScale = 0;
+            OnPlayerDeath?.Invoke(); // question mark is a shorthand for IF statement -> if(onPlayerDeath != null)
+        } else {
+            OnEnemyDeath?.Invoke();
         }
     
         // Destroy(gameObject);
