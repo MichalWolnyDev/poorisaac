@@ -106,13 +106,15 @@ public class Health : MonoBehaviour
     {
         Debug.Log("I am Dead!");
         if(this.CompareTag("Player")){
-            animator.SetTrigger("Dead");
+          animator.SetTrigger("Dead");
             SoundManagerScript.PlaySound("playerDeath"); // odtwarza d�wi�k �mierci gracza
 
             Time.timeScale = 0;
             OnPlayerDeath?.Invoke(); // question mark is a shorthand for IF statement -> if(onPlayerDeath != null)
         } else {
             OnEnemyDeath?.Invoke();
+            
+            Destroy(gameObject);
         }
     
         // Destroy(gameObject);

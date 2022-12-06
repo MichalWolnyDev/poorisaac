@@ -9,7 +9,7 @@ public class EnemyData : ScriptableObject
     // ScriptableObject holds some data for us that we can change
 
     public int hp;
-    public float damage;
+    public int damage;
     public float speed;
 
 }
