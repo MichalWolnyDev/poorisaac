@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] // with this our gameobject is accesible via inspector
-    private GameObject firstEnemyPrefab;
-    [SerializeField] 
-    private GameObject secondEnemyPrefab;
-    [SerializeField] 
-    private GameObject thirdEnemyPrefab;
+   
+    [SerializeField]
+    public int enemyNumber;
+
+    [SerializeField]
+    private GameObject[] enemyPrefabs;
+
+    [SerializeField]
+    private float[] enemyIntervals;
 
 
-    [SerializeField] 
-    private float firstEnemyInterval = 3.5f; // interval of spawning
-    [SerializeField] 
-    private float secondEnemyInterval = 10f;
-    [SerializeField] 
-    private float thirdEnemyInterval = 4f;
-
+    private int enemyCounter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnEnemy(firstEnemyInterval, firstEnemyPrefab));
-        StartCoroutine(spawnEnemy(secondEnemyInterval, secondEnemyPrefab));
-        StartCoroutine(spawnEnemy(thirdEnemyInterval, thirdEnemyPrefab));
+
+        for(int i = 0; i < enemyPrefabs.Length; i++){
+
+            if(enemyCounter < enemyNumber) {
+                    StartCoroutine(spawnEnemy(enemyIntervals[i], enemyPrefabs[i]));
+                    enemyCounter ++;
+            }
+
+        }
+       
     }
 
     // ienumerator allows to iterate through object no matter what their access modifier is
@@ -37,6 +41,9 @@ public class EnemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy, gameObject.transform.position, Quaternion.identity);
 
         // couroutine is a function that can suspend its execution until the given yield instrucion finishes
-        StartCoroutine(spawnEnemy(interval, enemy));
+        if(enemyCounter < enemyNumber) {
+            StartCoroutine(spawnEnemy(interval, enemy));
+            enemyCounter++;
+        }
     }
 }
