@@ -22,7 +22,6 @@ private Vector2 position;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        SetEnemyValues();
         target = player.transform.position;
         position = gameObject.transform.position;
         
@@ -40,13 +39,7 @@ private Vector2 position;
         transform.position = Vector2.MoveTowards(transform.position, target, step);
     }
 
-    private void SetEnemyValues()
-    {
-        GetComponent<Health>().SetHealth(data.hp, data.hp);
-        damage = data.damage;
-        speed = data.speed;
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.CompareTag("Player")){
             if(collider.GetComponent<Health>() != null){
