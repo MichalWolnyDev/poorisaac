@@ -9,6 +9,9 @@ public class Health : MonoBehaviour
 
     private int hearthNumber = 5;
     private int MAX_HEALTH = 100;
+    private bool checkDieing;
+    private bool hasPlayed = false;
+
     public GameObject[] hearts;
     public Animator animator;
 
@@ -19,7 +22,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             // Damage(10);
         }
@@ -102,21 +105,36 @@ public class Health : MonoBehaviour
         }
     }
 
+    private IEnumerator dieing(float waitTime){
+        checkDieing = true;
+        yield return new WaitForSeconds(waitTime);
+
+            Time.timeScale = 0; // zapobiega petli, wykonuje tylko raz akcje
+        
+            OnPlayerDeath?.Invoke(); // question mark is a shorthand for IF statement -> if(onPlayerDeath != null)
+
+        checkDieing = !checkDieing;
+    }
+
     private void Die()
     {
         Debug.Log("I am Dead!");
         if(this.CompareTag("Player")){
-          
-            SoundManagerScript.PlaySound("playerDeath"); // odtwarza d�wi�k �mierci gracza
-
-            Time.timeScale = 0;
-            OnPlayerDeath?.Invoke(); // question mark is a shorthand for IF statement -> if(onPlayerDeath != null)
             animator.SetTrigger("Dead");
+
+            if(!hasPlayed){
+                SoundManagerScript.PlaySound("playerDeath"); // odtwarza d�wi�k �mierci gracza
+                hasPlayed = true;
+            }
+
+            if(!checkDieing){
+                StartCoroutine(dieing(2f));
+            }
+            
         } else {
             OnEnemyDeath?.Invoke();
             Destroy(gameObject);
         }
     
-        // Destroy(gameObject);
     }
 }
