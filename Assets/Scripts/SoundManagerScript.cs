@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip playerDeathSound, playerAttack;
+    public static AudioClip playerDeathSound, playerAttack, gateSound, zombieDeath;
     static AudioSource audioSrc;
     
 
@@ -12,7 +12,8 @@ public class SoundManagerScript : MonoBehaviour
     {
         playerDeathSound = Resources.Load<AudioClip> ("death1");
         playerAttack = Resources.Load<AudioClip> ("attack1");
-
+        gateSound = Resources.Load<AudioClip>("gate");
+        zombieDeath = Resources.Load<AudioClip>("zombiedeath");
         audioSrc = GetComponent<AudioSource> ();
     }
 
@@ -30,6 +31,12 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "playerAttack":
                 audioSrc.PlayOneShot(playerAttack);
+                break;
+            case "gateSound":
+                audioSrc.PlayOneShot(gateSound);
+                break;
+            case "zombieDeath":
+                audioSrc.PlayOneShot(zombieDeath);
                 break;
         }
     }

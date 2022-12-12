@@ -10,7 +10,7 @@ public class GameOverUI : MonoBehaviour
     [SerializeField]
     private Text scoreValueText;
 
-    private int score = 0;
+   public static int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class GameOverUI : MonoBehaviour
         Health.OnEnemyDeath -= CountScore;
     }
 
-    private void CountScore(){
+    public void CountScore(){
         score++;
     }
 
