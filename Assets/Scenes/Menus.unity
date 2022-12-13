@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c29d74ba66b54d8e4ac5acac37cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 100000
   hearts:
   - {fileID: 1343603957}
   - {fileID: 606231551}
@@ -5981,7 +5981,7 @@ GameObject:
   - component: {fileID: 756359249}
   m_Layer: 0
   m_Name: EnemySpawner2
-  m_TagString: Untagged
+  m_TagString: EnemySpawner2
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6022,6 +6022,8 @@ MonoBehaviour:
   - 2
   - 0.5
   - 1
+  spawning: 0
+  defeated: 0
 --- !u!212 &756359249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6992,7 +6994,7 @@ GameObject:
   - component: {fileID: 1199718259}
   m_Layer: 0
   m_Name: EnemySpawner3
-  m_TagString: Untagged
+  m_TagString: EnemySpawner3
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7033,6 +7035,8 @@ MonoBehaviour:
   - 1.2
   - 2
   - 0.4
+  spawning: 0
+  defeated: 0
 --- !u!212 &1199718259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7682,7 +7686,7 @@ GameObject:
   - component: {fileID: 1507327681}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7708,6 +7712,8 @@ MonoBehaviour:
   - 1.1
   - 0.3
   - 2
+  spawning: 1
+  defeated: 0
 --- !u!4 &1507327679
 Transform:
   m_ObjectHideFlags: 0
@@ -8023,7 +8029,7 @@ GameObject:
   - component: {fileID: 1645062566}
   m_Layer: 0
   m_Name: EnemySpawner5
-  m_TagString: Untagged
+  m_TagString: EnemySpawner5
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8060,6 +8066,8 @@ MonoBehaviour:
   - {fileID: 3590630139112853324, guid: 93b5bd07573ff804c974dd09b1c26106, type: 3}
   enemyIntervals:
   - 1
+  spawning: 0
+  defeated: 0
 --- !u!212 &1645062566
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8347,7 +8355,7 @@ GameObject:
   - component: {fileID: 2053608158}
   m_Layer: 0
   m_Name: EnemySpawner4
-  m_TagString: Untagged
+  m_TagString: EnemySpawner4
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8386,6 +8394,8 @@ MonoBehaviour:
   enemyIntervals:
   - 1
   - 1.3
+  spawning: 0
+  defeated: 0
 --- !u!212 &2053608158
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
     public static Action OnPlayerDeath;
     public static Action OnEnemyDeath;
 
+ 
    
     // Update is called once per frame
     void Update()
@@ -134,6 +136,7 @@ public class Health : MonoBehaviour
         } else {
             OnEnemyDeath?.Invoke();
             Destroy(gameObject);
+            ScoreManager.instance.AddPoint();
         }
     
     }

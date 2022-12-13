@@ -10,15 +10,11 @@ private EnemyData data;
 
 private GameObject player;
 
-private Vector2 target;
-private Vector2 position;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        target = player.transform.position;
-        position = gameObject.transform.position;
         
     }
 
@@ -31,7 +27,7 @@ private Vector2 position;
     private void EnemyPosition(){
         float step = data.speed * Time.deltaTime;
 
-        transform.position = Vector2.MoveTowards(transform.position, target, step);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
     }
 
     

@@ -14,6 +14,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float[] enemyIntervals;
 
+    [SerializeField]
+    public bool spawning;
+    [SerializeField]
+    public bool defeated;
+
 
     private int enemyCounter = 0;
 
@@ -21,7 +26,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
 
-        for(int i = 0; i < enemyPrefabs.Length; i++){
+        if(spawning && !defeated){
+            for(int i = 0; i < enemyPrefabs.Length; i++){
 
             if(enemyCounter < enemyNumber) {
                     StartCoroutine(spawnEnemy(enemyIntervals[i], enemyPrefabs[i]));
@@ -29,7 +35,21 @@ public class EnemySpawner : MonoBehaviour
             }
 
         }
+        }
        
+    }
+
+    private void Update(){
+        if(spawning && !defeated){
+            for(int i = 0; i < enemyPrefabs.Length; i++){
+
+            if(enemyCounter < enemyNumber) {
+                    StartCoroutine(spawnEnemy(enemyIntervals[i], enemyPrefabs[i]));
+                    enemyCounter ++;
+            }
+
+        }
+        }
     }
 
     // ienumerator allows to iterate through object no matter what their access modifier is
