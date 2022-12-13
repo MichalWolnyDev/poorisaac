@@ -6,11 +6,6 @@ public class Enemy : MonoBehaviour
 {
 
 [SerializeField]
-private int damage = 1;
-[SerializeField]
-private float speed = 1.5f;
-
-[SerializeField]
 private EnemyData data;
 
 private GameObject player;
@@ -34,7 +29,7 @@ private Vector2 position;
     }
 
     private void EnemyPosition(){
-        float step = speed * Time.deltaTime;
+        float step = data.speed * Time.deltaTime;
 
         transform.position = Vector2.MoveTowards(transform.position, target, step);
     }
@@ -43,8 +38,7 @@ private Vector2 position;
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.CompareTag("Player")){
             if(collider.GetComponent<Health>() != null){
-                collider.GetComponent<Health>().Damage(damage);
-                // this.GetComponent<Health>().Damage(10000);
+                collider.GetComponent<Health>().Damage(data.damage);
             }
         }
     }

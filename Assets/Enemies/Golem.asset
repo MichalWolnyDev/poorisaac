@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: 
   hp: 85
-  damage: 0.7
+  damage: 5
   speed: 0.4

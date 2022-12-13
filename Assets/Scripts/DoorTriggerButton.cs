@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorTriggerButton : MonoBehaviour
 {
     [SerializeField] private DoorSetActive door;
-    public int iloscmobow;
+    public int enemyCount;
 
     private void Update()
     {
@@ -19,7 +19,7 @@ public class DoorTriggerButton : MonoBehaviour
         } */
 
 
-        if (GameOverUI.score==iloscmobow) // tutaj podajemy iloœæ mobów która wyskoczy ze spawnera, do ka¿dej kolejnej bramy dodajemy iloœæ mobów z poprzedich spawnerów
+        if (GameOverUI.score==enemyCount) // tutaj podajemy iloï¿½ï¿½ mobï¿½w ktï¿½ra wyskoczy ze spawnera, do kaï¿½dej kolejnej bramy dodajemy iloï¿½ï¿½ mobï¿½w z poprzedich spawnerï¿½w
         {
             door.OpenDoor();
         }
