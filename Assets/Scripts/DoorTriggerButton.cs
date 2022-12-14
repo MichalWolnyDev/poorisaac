@@ -43,7 +43,7 @@ public class DoorTriggerButton : MonoBehaviour
         // }
 
 
-        if(ScoreManager.instance.score >= 3){
+         if(ScoreManager.instance.score >= 3){
             spawner2.GetComponent<EnemySpawner>().spawning = true;
             spawner3.GetComponent<EnemySpawner>().spawning = true;
         }
