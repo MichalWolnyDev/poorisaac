@@ -23,6 +23,12 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Wynik: " + score.ToString();
     }
 
+    void Update(){
+        if(score >= 24){
+            EndGameUI.instance.ActivateGameObject();
+        }
+    }
+
     public void AddPoint(){
         score += 1;
         scoreText.text = "Wynik: " + score.ToString();

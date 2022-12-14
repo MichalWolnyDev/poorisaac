@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c29d74ba66b54d8e4ac5acac37cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100000
+  health: 100
   hearts:
   - {fileID: 1343603957}
   - {fileID: 606231551}
@@ -1027,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &379314521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6208,7 +6208,7 @@ GameObject:
   - component: {fileID: 745915687}
   - component: {fileID: 745915686}
   m_Layer: 5
-  m_Name: GameOverText
+  m_Name: EndGameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8657,7 +8657,7 @@ GameObject:
   - component: {fileID: 1920162631}
   - component: {fileID: 1920162634}
   - component: {fileID: 1920162633}
-  - component: {fileID: 1920162632}
+  - component: {fileID: 1920162635}
   m_Layer: 5
   m_Name: EndGamePanel
   m_TagString: Untagged
@@ -8686,22 +8686,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5468, y: -3175}
+  m_AnchoredPosition: {x: -2, y: 1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1920162632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920162630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ad79ce1ef8030a4abeb9f062762d276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValueText: {fileID: 147956685}
 --- !u!114 &1920162633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8715,7 +8702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09951806, g: 1, b: 0, a: 0.392}
+  m_Color: {r: 0.09803939, g: 1, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8740,6 +8727,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920162630}
   m_CullTransparentMesh: 1
+--- !u!114 &1920162635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920162630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489760e10cae13c4a8e3602a317bcb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValueText: {fileID: 147956685}
 --- !u!1 &1938140095
 GameObject:
   m_ObjectHideFlags: 0
@@ -8824,8 +8824,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1920162632}
-        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+      - m_Target: {fileID: 1920162635}
+        m_TargetAssemblyTypeName: EndGameUI, Assembly-CSharp
         m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
