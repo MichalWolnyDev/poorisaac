@@ -135,6 +135,7 @@ public class Health : MonoBehaviour
             
         } else {
             OnEnemyDeath?.Invoke();
+            SoundManagerScript.PlaySound("zombieDeath");
             Destroy(gameObject);
             ScoreManager.instance.AddPoint();
         }

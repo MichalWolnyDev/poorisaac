@@ -33,5 +33,6 @@ public class EndGameUI : MonoBehaviour
         this.gameObject.SetActive(true);
         score = ScoreManager.instance.score;
         scoreValueText.text = score.ToString();
+        SoundManagerScript.PlaySound("winner");
     }
 }
