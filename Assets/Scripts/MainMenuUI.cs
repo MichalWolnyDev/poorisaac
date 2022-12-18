@@ -16,7 +16,15 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene(1);
    }
 
-   public void ExitGameButton(){
+   public void AboutUsButton() {
+        SceneManager.LoadScene(2);
+   }
+
+    public void ReturnToMenu() {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ExitGameButton(){
         Application.Quit();
    }
 }
