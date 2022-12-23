@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip playerDeathSound, playerAttack, gateSound, zombieDeath, winner;
+    public static AudioClip playerDeathSound, playerAttack, gateSound, zombieDeath, winner; 
     static AudioSource audioSrc;
     
 
     void Start()
     {
-        playerDeathSound = Resources.Load<AudioClip> ("death1");
+        playerDeathSound = Resources.Load<AudioClip> ("death1"); // przypisanie do zmiennej konkretnego pliku dŸwiêkowego
         playerAttack = Resources.Load<AudioClip> ("attack1");
         gateSound = Resources.Load<AudioClip>("gate");
         zombieDeath = Resources.Load<AudioClip>("zombiedeath");
@@ -24,11 +24,11 @@ public class SoundManagerScript : MonoBehaviour
     }
 
 
-    public static void PlaySound (string clip)
+    public static void PlaySound (string clip) // funkcja odpowiadaj¹ca za odtwarzanie dŸwiêku
     {
         switch (clip) {
             case "playerDeath":
-                audioSrc.PlayOneShot (playerDeathSound);
+                audioSrc.PlayOneShot (playerDeathSound); 
                 break;
             case "playerAttack":
                 audioSrc.PlayOneShot(playerAttack);
